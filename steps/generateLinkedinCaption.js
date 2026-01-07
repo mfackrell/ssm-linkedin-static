@@ -9,34 +9,59 @@ export async function generateLinkedinCaption(topic) {
 
   // 1. Define the Persona
   const systemPrompt = `
-You are a content strategist for QuickAsset.
-You are writing a LinkedIn post based on the "Lighter, Not Louder" philosophy.
+You are writing an educational LinkedIn post for executives about financial systems architecture.
+
+Context:
+- Company: ScaleQB  
+- What ScaleQB does:  
+  "ScaleQB redesigns and optimizes financial systems architecture for $2M–$30M companies so they can scale cleanly without prematurely migrating to an ERP. Most companies don’t outgrow QuickBooks — they outgrow how it's set up."
+
+Target Audience:
+- CEOs, founders, operators  
+- CFOs, controllers  
+- Companies between $2M–$30M in revenue  
+- Experiencing scaling pain, reporting chaos, bad data, or pressure to move to an ERP
+
+Post Topic (use this exactly, don’t change it):
 `;
 
   // 2. Define the Task
   const userPrompt = `
   Topic: ${topic}
-  INPUT LINK: https://quickasset.vercel.app/
+  Content Purpose:
+- Educate, not sell  
+- Build authority and trust  
+- Reduce fear and confusion around financial systems and reporting  
+- Explain financial architecture and system design in plain language  
+- Show that better architecture and configuration can often delay or avoid a premature ERP migration
 
-  YOUR TASK:
-  1. Analyze the INPUT HEADLINE to identify the specific professional audience or asset implied.
-  2. Write a LinkedIn post (150-250 words) that treats the digital asset as a serious productivity tool.
+Tone and Style:
+- CEO-friendly, peer-to-peer  
+- No jargon, no fluff  
+- No hard sales pitches, no “DM me” or “book a call”  
+- Clear, analytical, practical  
+- Grounded in real-world finance systems work with $2M–$30M companies  
+- Use specific examples, patterns, or rules of thumb where helpful  
+- Assume the reader is smart but busy
 
-  STRUCTURE:
-  1. The Professional Insight: Start with a counter-intuitive observation about the specific industry work. (e.g., "Great architecture isn't just about design; it's about file management.")
-  2. The Asset Validation: Acknowledge that the "boring" file they use every day is actually their most valuable intellectual property.
-  3. The Market Reality: Remind them that junior professionals or peers are actively looking for this exact template/tool to save time.
-  4. The Solution: "You can productize this in minutes."
-  5. The Link: Place the link on its own line at the bottom.
+Structure:
+1. Start with 1–2 concise opening lines that hook by directly stating the problem, misconception, or tension implied by the topic.  
+2. Then 2–4 short paragraphs that:
+   - Explain the key idea in plain language  
+   - Teach 1–3 concrete takeaways (what to look for, what to fix first, how to think about the decision)  
+   - Use simple examples tied to $2M–$30M companies and QuickBooks vs ERP decisions  
+3. In the second-to-last paragraph, include a brief, matter-of-fact mention of ScaleQB as an example of this kind of work (e.g., “This is the kind of work ScaleQB does…”), without a call to action.  
+4. End with 1 closing line that gives a clear, practical lens, question, or rule of thumb the reader can use in their own business.
 
-  TONE & STYLE:
-  - Professional, clear, and calm.
-  - No "Bro-etry" (one-line paragraphs). Use standard paragraphs.
-  - No "Hustle" language ("Crush it", "10x").
-  - Use minimal, clean emojis if needed (only 1-2 max).
-
-  OUTPUT FORMAT:
-  Return ONLY the post text.
+Formatting Rules (MUST follow):
+- Aim for 120–220 words  
+- Use short paragraphs and line breaks for readability  
+- No bullets or numbered lists in the final output  
+- No hashtags  
+- No emojis  
+- No links  
+- Mention “ScaleQB” exactly once, near the end, in a low-key, non-promotional way  
+- Do not reference these instructions or the word “topic”
   `;
 
   try {
