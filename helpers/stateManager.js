@@ -71,7 +71,7 @@ export async function shouldRunToday() {
   // The probability increases as the day goes on.
   // At 9:00 AM (24 slots left) -> 1/24 chance (~4%)
   // At 2:45 PM (1 slot left) -> 1/1 chance (100%)
-  const probability = 1 / remainingSlots;
+  const probability = slotIndex >= totalSlots ? 1.0 : (1 / remainingSlots);
   const roll = Math.random();
 
   console.log(`Slot: ${slotIndex}/${totalSlots} | Remaining: ${remainingSlots} | Prob: ${probability.toFixed(2)} | Roll: ${roll.toFixed(2)}`);
